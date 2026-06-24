@@ -116,6 +116,22 @@
     });
   }
 
+  /* ---- hero carousel ---- */
+  var car=document.getElementById('heroCarousel');
+  if(car){
+    var slides=[].slice.call(car.querySelectorAll('.slide'));
+    var dotsWrap=document.getElementById('carDots'), cap=document.getElementById('carCap'), ci=0, timer=null;
+    slides.forEach(function(s,i){var btn=document.createElement('button');btn.setAttribute('aria-label','Show photo '+(i+1));btn.addEventListener('click',function(){cgo(i);restartCar();});dotsWrap.appendChild(btn);});
+    var dots=[].slice.call(dotsWrap.children); if(dots[0])dots[0].classList.add('on');
+    function cgo(i){slides[ci].classList.remove('on');if(dots[ci])dots[ci].classList.remove('on');ci=i;slides[ci].classList.add('on');if(dots[ci])dots[ci].classList.add('on');if(cap)cap.textContent=slides[ci].getAttribute('data-cap')||'';}
+    function cnext(){cgo((ci+1)%slides.length);}
+    function cstart(){if(!reduce&&slides.length>1)timer=setInterval(cnext,3800);}
+    function restartCar(){if(timer)clearInterval(timer);cstart();}
+    cstart();
+    car.addEventListener('mouseenter',function(){if(timer)clearInterval(timer);});
+    car.addEventListener('mouseleave',cstart);
+  }
+
   /* ---- reveal ---- */
   if('IntersectionObserver' in window && !reduce){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});}
   else document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
