@@ -62,15 +62,17 @@
   <div class="wrap nav-in">
     <a class="logo" href="#top"><span class="blip">$</span>Dollar 'N' Plus</a>
     <span class="nav-spacer"></span>
-    <a class="navlink" href="#services">Services</a>
     <a class="navlink" href="#departments">Shop</a>
+    <a class="navlink" href="#services">Services</a>
+    <a class="navlink" href="#gallery">Gallery</a>
     <a class="navlink" href="#visit">Visit</a>
-    <a class="btn btn-primary nav-cta" href="tel:+16047648475">Call store</a>
+    <a class="btn btn-primary nav-cta" href="tel:+16047648475">Call now</a>
     <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
   </div>
   <nav class="nav-menu" id="navMenu" aria-label="Mobile navigation">
-    <a href="#services">Services</a>
     <a href="#departments">Shop</a>
+    <a href="#services">Services</a>
+    <a href="#gallery">Gallery</a>
     <a href="#visit">Visit</a>
     <a href="tel:+16047648475">Call (604) 764-8475</a>
   </nav>
@@ -84,20 +86,24 @@
   <div class="wrap">
     <div class="bento">
       <div class="bcard brand">
-        <span class="hero-pill"><span class="d"></span>UBC · University Village · Open 7 days</span>
-        <h1>More than a <span class="hl">dollar store.</span></h1>
-        <p class="lede">Everyday goods <b>and</b> a real neighbourhood <b>service hub</b> — U-Haul, shipping, moving, phone &amp; internet plans, and home cleaning, all in one place at UBC.</p>
+        <span class="hero-pill"><span class="d"></span>UBC's one-stop shop &amp; service hub</span>
+        <h1>Everything you need, <span class="hl">near UBC.</span></h1>
+        <p class="lede">Shopping, moving, shipping, internet &amp; phone setup, and home cleaning — all in one place. For students, residents, faculty &amp; staff across UBC &amp; University Village.</p>
+        <div class="proof"><svg viewBox="0 0 24 24" fill="currentColor" style="color:var(--primary)"><path d="M12 21s-7.4-4.5-9.8-9.1C.7 8.6 2.1 5 5.5 5c2 0 3.3 1.2 4.1 2.4C10.4 6.2 11.7 5 13.7 5c3.4 0 4.8 3.6 3.3 6.9C16.6 16.5 12 21 12 21z"/></svg> Trusted across UBC &amp; University Village</div>
+        <div class="stats">
+          <div class="stat"><div class="n">10+</div><div class="t">Departments</div></div>
+          <div class="stat"><div class="n">5</div><div class="t">Services</div></div>
+          <div class="stat"><div class="n">7</div><div class="t">Days a week</div></div>
+          <div class="stat"><div class="n">2 min</div><div class="t">From campus</div></div>
+        </div>
         <div class="cta-row">
-          <a class="btn btn-primary" href="tel:+16047648475">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4h13v12H1z"/><path d="M14 8h4l3 3v5h-7"/><circle cx="6" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/></svg>
-            Book U-Haul / Moving
-          </a>
+          <a class="btn btn-primary" href="tel:+16047648475"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4h13v12H1z"/><path d="M14 8h4l3 3v5h-7"/><circle cx="6" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/></svg>Book U-Haul / Moving</a>
           <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=5721+Dalhousie+Rd,+Vancouver,+BC+V6T+2H9" target="_blank" rel="noopener">Get directions</a>
         </div>
         <div class="search-wrap">
           <div class="search-box">
             <svg class="mag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-            <input id="need" type="text" autocomplete="off" placeholder="Find anything — try “move”, “party”, “clean”…" role="combobox" aria-expanded="false" aria-controls="results" aria-autocomplete="list" />
+            <input id="need" type="text" autocomplete="off" placeholder="What do you need today? Try &ldquo;move&rdquo;, &ldquo;party&rdquo;&hellip;" role="combobox" aria-expanded="false" aria-controls="results" aria-autocomplete="list" />
             <button class="search-go" id="searchGo">Search</button>
           </div>
           <div class="results" id="results" role="listbox" aria-label="Matches"></div>
@@ -109,27 +115,34 @@
           <button data-q="beauty">Self-care</button>
         </div>
       </div>
-      <div class="bcard photo">
-        <img src="storefront-dollar-n-plus-ubc.webp" width="570" height="760" alt="Dollar 'N' Plus storefront with pink awning at 5721 Dalhousie Rd near UBC" />
-        <span class="ov">5721 Dalhousie Rd · University Village</span>
+
+      <div class="bcard carousel" id="heroCarousel" aria-label="Store photos" aria-roledescription="carousel">
+        <div class="slide on" data-cap="Our store &middot; 5721 Dalhousie Rd"><img src="storefront-dollar-n-plus-ubc.webp" width="570" height="760" alt="Dollar 'N' Plus storefront near UBC"></div>
+        <div class="slide" data-cap="Kitchenware &amp; tableware"><img src="kitchenware-tableware.webp" width="610" height="760" alt="Colourful plates and tableware"></div>
+        <div class="slide" data-cap="Party supplies &amp; balloons"><img src="party-supplies-balloons.webp" width="570" height="760" alt="Party supplies and balloons"></div>
+        <div class="slide" data-cap="Snacks &amp; drinks"><img src="snacks-drinks.webp" width="570" height="760" alt="Snacks and drinks wall"></div>
+        <div class="slide" data-cap="Stationery &amp; office"><img src="stationery-office.webp" width="570" height="760" alt="Stationery and office shelves"></div>
+        <span class="cap" id="carCap">Our store &middot; 5721 Dalhousie Rd</span>
+        <div class="dots" id="carDots"></div>
+      </div>
+
+      <div class="bcard hsvc">
+        <div class="hl-row"><span class="t">Our 5 services</span><a href="#services">See all &rarr;</a></div>
+        <div class="chips">
+          <a class="chip" href="#services"><span class="ci ic-rasp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4h13v12H1z"/><path d="M14 8h4l3 3v5h-7"/><circle cx="6" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/></svg></span>U-Haul</a>
+          <a class="chip" href="#services"><span class="ci ic-plum"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="8" height="8" rx="1"/><rect x="13" y="10" width="8" height="8" rx="1"/><rect x="8" y="3" width="8" height="7" rx="1"/></svg></span>Moving</a>
+          <a class="chip" href="#services"><span class="ci ic-gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8l-9-5-9 5v8l9 5 9-5z"/><path d="M3.3 7 12 12l8.7-5M12 12v9"/></svg></span>Shipping</a>
+          <a class="chip" href="#services"><span class="ci ic-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.8a16 16 0 0 1 20 0"/><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/></svg></span>Internet</a>
+          <a class="chip" href="#services"><span class="ci ic-pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.7 4 4 1.7-4 1.7L12 14l-1.7-3.6-4-1.7 4-1.7z"/><path d="M18 14l1 2.2 2.2 1-2.2 1L18 21l-1-2.2L14.8 17l2.2-1z"/></svg></span>Cleaning</a>
+        </div>
       </div>
     </div>
 
-    <!-- ALL 5 SERVICES, ON THE FRONT PAGE -->
-    <div class="svc-bento" aria-label="Services">
-      <a class="sbtile" href="#services"><span class="ico ic-rasp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4h13v12H1z"/><path d="M14 8h4l3 3v5h-7"/><circle cx="6" cy="18.5" r="1.8"/><circle cx="17" cy="18.5" r="1.8"/></svg></span><span class="sb">Trucks &amp; vans</span><span class="nm">U-Haul Rental</span></a>
-      <a class="sbtile" href="#services"><span class="ico ic-plum"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="8" height="8" rx="1"/><rect x="13" y="10" width="8" height="8" rx="1"/><rect x="8" y="3" width="8" height="7" rx="1"/></svg></span><span class="sb">Dorms &amp; flats</span><span class="nm">Moving Help</span></a>
-      <a class="sbtile" href="#services"><span class="ico ic-gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8l-9-5-9 5v8l9 5 9-5z"/><path d="M3.3 7 12 12l8.7-5M12 12v9"/></svg></span><span class="sb">Parcels &amp; boxes</span><span class="nm">Shipping</span></a>
-      <a class="sbtile" href="#services"><span class="ico ic-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.8a16 16 0 0 1 20 0"/><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/></svg></span><span class="sb">Mobile &amp; home</span><span class="nm">Internet &amp; Phone</span></a>
-      <a class="sbtile" href="#services"><span class="ico ic-pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.7 4 4 1.7-4 1.7L12 14l-1.7-3.6-4-1.7 4-1.7z"/><path d="M18 14l1 2.2 2.2 1-2.2 1L18 21l-1-2.2L14.8 17l2.2-1z"/></svg></span><span class="sb">Reliable &amp; local</span><span class="nm">Home Cleaning</span></a>
-    </div>
-
-    <!-- ACTION ROW -->
     <div class="act-bento">
       <div class="acard call">
         <span class="lbl"><span class="dot"></span><span id="openText">Open 7 days a week</span></span>
         <span class="big">(604) 764-8475</span>
-        <a class="btn btn-light" href="tel:+16047648475">Call the store</a>
+        <a class="btn btn-light" href="tel:+16047648475">Call now</a>
       </div>
       <div class="acard dir">
         <span class="lbl">Getting here</span>
@@ -139,10 +152,22 @@
       <div class="acard hours">
         <span class="lbl">Opening hours</span>
         <div class="mini-hours">
-          <span class="row"><span>Mon – Sat</span><span>8:30 AM – 8:30 PM</span></span>
-          <span class="row"><span>Sunday</span><span>9:00 AM – 8:30 PM</span></span>
+          <span class="row"><span>Mon &ndash; Sat</span><span>8:30 AM &ndash; 8:30 PM</span></span>
+          <span class="row"><span>Sunday</span><span>9:00 AM &ndash; 8:30 PM</span></span>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="sec why" id="why">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:34px"><span class="eyebrow">Why the UBC community loves us</span><h2>One stop. Less stress.</h2></div>
+    <div class="why-grid">
+      <div class="wcard reveal"><span class="wi ic-rasp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>Save time</h3><p>Shopping and services in one trip &mdash; no trek downtown for a box, a SIM or a cleaning crew.</p></div>
+      <div class="wcard reveal"><span class="wi ic-gold"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13 21l-9-9V4h8z"/><circle cx="8" cy="8" r="1.4"/></svg></span><h3>Save money</h3><p>Everyday essentials at dollar-store prices &mdash; a dollar, or a little more.</p></div>
+      <div class="wcard reveal"><span class="wi ic-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Save stress</h3><p>Moving, shipping and internet setup handled locally, by people you can actually talk to.</p></div>
     </div>
   </div>
 </section>
