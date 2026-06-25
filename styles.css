@@ -303,3 +303,155 @@ h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.01em;line-h
 }
 @media(max-width:760px){.why-grid{grid-template-columns:1fr}}
 @media(max-width:520px){.stats{grid-template-columns:repeat(2,1fr)}.hsvc .chips{grid-template-columns:repeat(3,1fr)}}
+
+
+/* ============================================================
+   PREMIUM PASS — restraint: one accent, one elevation, one motion,
+   consistent photo treatment, tighter type + spacing scale
+   ============================================================ */
+:root{--chip:#F3E9E3}
+
+/* (3) ONE ACCENT — all service/feature icons share one neutral chip; raspberry is the only accent */
+.ic-rasp,.ic-green,.ic-gold,.ic-plum,.ic-pink{background:var(--chip)}
+.brand h1 .hl::after{background:rgba(214,42,68,.16)}
+.logo .blip{background:var(--primary)}
+.foot-col h4{color:rgba(255,255,255,.5)}
+.vline a{border-bottom-color:var(--primary)}
+/* color department tiles -> quiet neutral, ink label */
+.cc-gold .ph,.cc-mint .ph,.cc-plum .ph,.cc-rasp .ph{background:linear-gradient(135deg,var(--tint),#fff 92%);color:var(--ink)}
+.dcard.color .ct{color:var(--ink)}
+.dcard.color .ph{position:relative}
+.dcard.color .ph::before{content:"";position:absolute;left:20px;top:20px;width:26px;height:3px;border-radius:2px;background:var(--primary)}
+
+/* (2) ONE ELEVATION — floating cards use shadow only, no borders */
+.bcard,.dcard,.wcard,.form-card,.info-card,.acard,.map,.results{border:0}
+
+/* (1) CONSISTENT PHOTO TREATMENT — gentle documentary grade + subtle vignette */
+.dcard .ph img,.g img,.carousel .slide img{filter:saturate(.92) contrast(1.03)}
+.dcard .ph,.g{position:relative}
+.dcard .ph::after,.g::after,.carousel::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 52px rgba(28,12,20,.16);pointer-events:none;z-index:1}
+.dcard .ph .zoom{z-index:2}
+
+/* (5) ONE MOTION — keep the lift, drop the competing image zoom */
+.dcard:hover .ph img,.g:hover img{transform:none}
+.dcard .ph img,.g img{transition:filter .3s ease}
+
+/* (4) TYPE HIERARCHY — bigger jumps, tighter display tracking */
+.brand h1{font-size:clamp(2.7rem,5.2vw,4.1rem);letter-spacing:-.025em;line-height:1.0}
+.sec-head h2{font-size:clamp(2.2rem,4.8vw,3.4rem);letter-spacing:-.025em}
+.dcard h3,.wcard h3,.svc .name{letter-spacing:-.015em}
+.sec-head p,.lede{font-weight:450}
+
+/* (7) SPACING SCALE — 8 / 16 / 24 / 40 / 64 / 96, applied consistently */
+.sec{padding:96px 0}
+.sec-head{margin-bottom:40px}
+.bento,.act-bento,.dept-grid,.gallery,.svc-list{gap:16px}
+.why-grid,.contact-grid{gap:24px}
+.bcard.brand{padding:40px}
+.bcard.hsvc{padding:24px}
+.svc{padding:24px 32px}
+.wcard,.form-card,.info-card{padding:32px}
+.acard{padding:24px 28px}
+.titem{padding:32px 24px}
+
+@media(max-width:760px){
+  .sec{padding:64px 0}
+  .svc{padding:20px 22px}
+  .wcard,.form-card,.info-card{padding:24px}
+}
+
+
+/* ============================================================
+   MOTION / MODERN PASS — depth, scroll motion, one dark section,
+   campus section, single-accent glows (no rainbow), glass nav
+   ============================================================ */
+
+/* glass navbar + shrink on scroll */
+.nav-in{transition:height .25s ease}
+.logo{transition:font-size .25s ease}
+.nav.shrink{box-shadow:0 6px 24px rgba(42,22,34,.08)}
+.nav.shrink .nav-in{height:58px}
+.nav.shrink .logo{font-size:1.18rem}
+
+/* drifting hero blobs */
+@keyframes drift{0%{transform:translate(0,0)}50%{transform:translate(26px,20px)}100%{transform:translate(0,0)}}
+.blob.b1{animation:drift 20s ease-in-out infinite}
+.blob.b2{animation:drift 26s ease-in-out infinite reverse}
+
+/* subtle floating service icons in hero */
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.hsvc .chip .ci{animation:floaty 5.5s ease-in-out infinite}
+.hsvc .chip:nth-child(2) .ci{animation-delay:.5s}
+.hsvc .chip:nth-child(3) .ci{animation-delay:1s}
+.hsvc .chip:nth-child(4) .ci{animation-delay:1.5s}
+.hsvc .chip:nth-child(5) .ci{animation-delay:2s}
+
+/* single-accent glow hovers + button micro-scale */
+.btn:hover{transform:translateY(-2px) scale(1.02)}
+.dcard:hover{box-shadow:0 22px 50px rgba(214,42,68,.16)}
+.svc:hover{box-shadow:0 18px 44px rgba(214,42,68,.16)}
+.hsvc .chip:hover{box-shadow:0 12px 26px rgba(214,42,68,.18)}
+.ccard:hover{box-shadow:0 22px 50px rgba(214,42,68,.14)}
+
+/* map zoom on hover */
+.map iframe{transition:transform .5s ease}
+.map:hover iframe{transform:scale(1.03)}
+
+/* staggered reveal (content-safe: only hides when JS is on) */
+.sreveal.in{opacity:1;transform:none}
+.js .sreveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.js .sreveal.in{opacity:1;transform:none}
+
+/* DARK contrast section ("Why...") */
+.darkwhy{background:radial-gradient(circle at 12% -10%, #3a1828, transparent 55%), #1d0d15;color:#fff}
+.darkwhy .sec-head .eyebrow{color:#ff8fa3}
+.darkwhy .sec-head h2{color:#fff}
+.darkwhy .wcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);box-shadow:none}
+.darkwhy .wcard:hover{box-shadow:0 24px 54px rgba(0,0,0,.35);transform:translateY(-4px)}
+.darkwhy .wcard .wi{background:rgba(255,255,255,.1)}
+.darkwhy .wcard .wi svg{color:#fff}
+.darkwhy .wcard h3{color:#fff}
+.darkwhy .wcard p{color:rgba(255,255,255,.72)}
+
+/* CAMPUS section */
+.campus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.ccard{background:var(--surface);border-radius:20px;padding:32px;box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease}
+.ccard:hover{transform:translateY(-4px)}
+.ctag{display:inline-block;font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--primary);margin-bottom:10px}
+.ccard h3{font-size:1.3rem;margin-bottom:8px;letter-spacing:-.015em}
+.clist{list-style:none;margin:14px 0 0;padding:0}
+.clist li{display:flex;align-items:center;gap:11px;padding:11px 0;font-weight:600;border-top:1px solid var(--line)}
+.clist li:first-child{border-top:0}
+.clist li svg{width:18px;height:18px;color:var(--primary);flex:none}
+
+/* depth on contact */
+.contact{background:radial-gradient(circle at 85% -5%, rgba(214,42,68,.06), transparent 42%), var(--tint)}
+
+@media(max-width:760px){.campus-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){
+  .blob,.hsvc .chip .ci{animation:none}
+  .js .sreveal{opacity:1;transform:none;transition:none}
+  .map:hover iframe{transform:none}
+}
+
+
+/* FAQ section */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.faq-item{background:var(--surface);border-radius:18px;padding:26px 28px;box-shadow:var(--shadow-sm)}
+.faq-item h3{font-size:1.12rem;margin-bottom:8px;letter-spacing:-.01em}
+.faq-item p{color:var(--muted);font-weight:500;font-size:.96rem;margin:0}
+@media(max-width:760px){.faq-grid{grid-template-columns:1fr}}
+
+
+/* REVIEWS / testimonials */
+.reviews{background:radial-gradient(circle at 12% 0%, rgba(214,42,68,.05), transparent 42%), var(--surface)}
+.reviews .sec-head p a{color:var(--primary);font-weight:700;text-decoration:none;border-bottom:2px solid var(--primary)}
+.rev-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.rcard{background:var(--bg);border-radius:20px;padding:32px;box-shadow:var(--shadow-sm);margin:0;display:flex;flex-direction:column}
+.rcard:hover{box-shadow:0 22px 50px rgba(214,42,68,.12)}
+.rcard{transition:box-shadow .2s ease}
+.rcard .stars{color:#F2A93B;font-size:1.05rem;letter-spacing:3px;margin-bottom:14px}
+.rcard blockquote{margin:0 0 18px;font-size:1.06rem;line-height:1.62;font-weight:500;color:var(--ink)}
+.rcard figcaption{margin-top:auto;font-weight:700;color:var(--ink);font-size:.95rem}
+.rcard figcaption span{color:var(--muted);font-weight:600}
+@media(max-width:760px){.rev-grid{grid-template-columns:1fr}}
