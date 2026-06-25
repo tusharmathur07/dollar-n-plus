@@ -1,5 +1,6 @@
 (function(){
   "use strict";
+  document.documentElement.classList.add('js');
   var reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
 
   /* ---- CONFIG: owner can edit ---- */
@@ -83,6 +84,9 @@
     document.getElementById('lbNext').addEventListener('click',function(){lbIdx=(lbIdx+1)%lbList.length;showImg();});
     document.getElementById('lbPrev').addEventListener('click',function(){lbIdx=(lbIdx-1+lbList.length)%lbList.length;showImg();});
     lb.addEventListener('click',function(e){if(e.target===lb)closeLB();});
+    var _tsx=0;
+    lb.addEventListener('touchstart',function(e){_tsx=e.changedTouches[0].clientX;},{passive:true});
+    lb.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-_tsx;if(Math.abs(dx)>40){lbIdx=(dx<0?lbIdx+1:lbIdx-1+lbList.length)%lbList.length;showImg();}},{passive:true});
     document.addEventListener('keydown',function(e){
       if(!lb.classList.contains('show'))return;
       if(e.key==='Escape')closeLB();
@@ -131,6 +135,25 @@
     car.addEventListener('mouseenter',function(){if(timer)clearInterval(timer);});
     car.addEventListener('mouseleave',cstart);
   }
+
+  /* ---- nav shrink on scroll ---- */
+  var navEl=document.querySelector('.nav');
+  if(navEl){var ns=function(){navEl.classList.toggle('shrink',window.scrollY>20);};ns();window.addEventListener('scroll',ns,{passive:true});}
+
+  /* ---- count-up stats ---- */
+  function countUp(el){var target=parseFloat(el.getAttribute('data-count'))||0,suf=el.getAttribute('data-suffix')||'',dur=1100,t0=null;function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(e*target)+suf;if(p<1)requestAnimationFrame(step);}requestAnimationFrame(step);}
+  var counters=[].slice.call(document.querySelectorAll('[data-count]'));
+  if(counters.length){
+    if(reduce||!('IntersectionObserver' in window)){counters.forEach(function(el){el.textContent=el.getAttribute('data-count')+(el.getAttribute('data-suffix')||'');});}
+    else{var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){countUp(e.target);cio.unobserve(e.target);}});},{threshold:.5});counters.forEach(function(el){cio.observe(el);});}
+  }
+
+  /* ---- staggered reveal for grid cards ---- */
+  [].slice.call(document.querySelectorAll('.dcard,.g,.wcard,.svc,.ccard,.faq-item,.rcard')).forEach(function(el){el.classList.remove('reveal');el.classList.add('sreveal');});
+  if('IntersectionObserver' in window && !reduce){
+    var sio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target,sibs=[].slice.call(el.parentNode.children).filter(function(n){return n.classList.contains('sreveal');}),idx=sibs.indexOf(el);setTimeout(function(){el.classList.add('in');},idx*70);sio.unobserve(el);}});},{threshold:.12});
+    document.querySelectorAll('.sreveal').forEach(function(el){sio.observe(el);});
+  } else { document.querySelectorAll('.sreveal').forEach(function(el){el.classList.add('in');}); }
 
   /* ---- reveal ---- */
   if('IntersectionObserver' in window && !reduce){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});}
